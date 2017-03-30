@@ -2,22 +2,5 @@
   <h2>新增电影</h2>
 
   <hr>
-  <%= form_for @movie do |f| %>
-  <% if @movie.errors.any? %>
-  <ul>
-    <% @movie.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-  <% end %>
-  影片名
-  <%= f.text_field :filmname %>
-  <br>
-  影片简介
-  <br>
-  <%= f.text_area :introduction %>
-  <br>
-
-  <%= f.submit "Submit", :disable_with => 'Submiting...'%>
-  <% end %>
+  <%= render "form"%>
 </div>
