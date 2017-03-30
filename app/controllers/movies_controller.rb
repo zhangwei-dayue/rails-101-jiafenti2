@@ -40,6 +40,28 @@ class MoviesController < ApplicationController
     redirect_to movies_path, alert: "删除电影成功！"
   end
 
+  def favrite
+    @movie = Movie.find(params[:id])
+    if !current_user.is_member_of?(@movie)
+      current_user.favrite!(@movie)
+      flash[:notice] = "收藏电影成功！"
+    else
+      flash[:warning] = "你已经收藏过电影了！"
+    end
+    redirect_to movie_path(@movie)
+  end
+
+  def cancel
+    @movie = Movie.find(params[:id])
+    if current_user.is_member_of?(@movie)
+      current_user.cancel!(@movie)
+      flash[:notice] = "已成功取消收藏电影！"
+    else
+      flash[:warning] = "你没有收藏过电影,怎么取消?"
+    end
+    redirect_to movie_path(@movie)
+  end
+
   private
 
   def find_movie_check_permission
