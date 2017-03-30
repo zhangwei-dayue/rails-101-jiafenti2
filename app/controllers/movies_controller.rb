@@ -20,7 +20,9 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     @movie.user = current_user
+
     if @movie.save
+      current_user.favrite!(@movie)
       redirect_to movies_path, notice: "添加电影成功！"
     else
       render :new
