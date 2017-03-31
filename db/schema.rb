@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170330063422) do
     t.integer  "user_id"
   end
 
+  create_table "movies_relationships", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "movie_id"
