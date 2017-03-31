@@ -15,7 +15,7 @@
         <tr>
           <td>#</td>
           <td><%= link_to(movie.filmname,movie_path(movie))%></td>
-          <td><%= movie.introduction %></td>
+          <td><%= render_movie_introduction(movie) %></td>
           <td><%= movie.reviews.count %></td>
           <td><%= movie.updated_at %></td>
         </tr>
